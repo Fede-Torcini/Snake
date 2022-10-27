@@ -1,17 +1,32 @@
 #pragma once
-#include <Vector2.h>
+
+#include <SFML/Graphics.hpp>
+
+#include "Part.h"
+#include "RenderShape.h"
 
 namespace snakegame
 {
 class Snake
 {
 public:
-    Vector2 getPosition() const;
+    Snake();
     void move();
-    void setVelocity(Vector2 const& movement);
+    void setVelocity(sf::Vector2f const& movement);
+    int partCount() const;
+    void grow();
+    bool intersects(RenderShape const& other) const;
+    bool alive() const;
+    sf::Vertex* draw();
+    sf::Texture* getTexture();
+
 private:
-    Vector2 m_position{ 0,0 };
-    Vector2 m_velocity{ 0,0 };
+
+    float m_speed;
+    
+    std::vector<Part> m_body;
+    sf::Texture m_texture;
+    std::vector<sf::Vertex> m_vertices;
 };
 }//namespace
 

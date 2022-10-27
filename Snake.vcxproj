@@ -19,13 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Map.cpp" />
+    <ClCompile Include="include\SFML\System\Vector2.cpp" />
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Part.cpp" />
+    <ClCompile Include="src\RenderShape.cpp" />
     <ClCompile Include="src\Snake.cpp" />
-    <ClCompile Include="src\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Map.h" />
+    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\Constants.h" />
+    <ClInclude Include="include\Part.h" />
+    <ClInclude Include="include\RenderShape.h" />
     <ClInclude Include="include\SFML\Audio.hpp" />
     <ClInclude Include="include\SFML\Audio\AlResource.hpp" />
     <ClInclude Include="include\SFML\Audio\Export.hpp" />
@@ -125,7 +130,6 @@
     <ClInclude Include="include\SFML\Window\WindowHandle.hpp" />
     <ClInclude Include="include\SFML\Window\WindowStyle.hpp" />
     <ClInclude Include="include\Snake.h" />
-    <ClInclude Include="include\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\flac.lib" />
