@@ -29,7 +29,10 @@ void Game::initWindow()
 
 void Game::update()
 {
+    //Event handling
     this->pollEvents();
+
+    //Game Update
     m_player->move();
     if (!m_player->alive())
     {
@@ -44,7 +47,9 @@ void Game::update()
     }
 }
 
-
+/*
+ * Cleans window, makes draw calls
+ */
 void Game::render()
 {
     m_window->clear();
@@ -76,15 +81,19 @@ void Game::pollEvents()
           
             switch (m_event.key.code)
             {
+            //move up
             case sf::Keyboard::W:
                 m_player->setVelocity({ 0,-1 });
                 break;
+            //move down
             case sf::Keyboard::S:
                 m_player->setVelocity({ 0,1 });
                 break;
+            //move left
             case sf::Keyboard::A:
                 m_player->setVelocity({ -1,0 });
                 break;
+            //move right
             case sf::Keyboard::D:
                 m_player->setVelocity({ 1,0 });
                 break;
@@ -99,6 +108,7 @@ void Game::pollEvents()
 Score::Score()
     : m_value(0)
 {
+    //initializing 
     m_font.loadFromFile(constants::TEXT_FONT_DIR);
     scoreText.setPosition({ constants::WINDOW_WIDTH / 2 - constants::SCORE_TEXT_SIZE / 2, constants::WINDOW_HEIGHT / 2 - constants::SCORE_TEXT_SIZE / 2});
     scoreText.setFont(m_font);

@@ -13,6 +13,7 @@ namespace snakegame
         m_texture.setRepeated(true);
 
     }
+    
     void Snake::move()
     {        
         for (Part& part : m_body)
@@ -21,6 +22,7 @@ namespace snakegame
         }
         setVelocity(m_body[0].m_velocity);
     }
+    
     void Snake::setVelocity(sf::Vector2f const& velocity)
     {
         sf::Vector2f target;
@@ -42,6 +44,10 @@ namespace snakegame
         }
 
     }
+
+    /*
+     * Returns Vertexptr to an array of all snake Vertexes 
+     */
     sf::Vertex* Snake::draw()
     {
         m_vertices.clear();
@@ -54,6 +60,10 @@ namespace snakegame
         return &m_vertices[0];
     }
 
+    /*
+     * Given a render shape,
+     * returns if the snake collides with it  
+     */
     bool Snake::intersects(RenderShape const& other) const
     {
         for (auto& part : m_body)
@@ -64,6 +74,9 @@ namespace snakegame
         return false;
     }
 
+    /*
+     * returns snake size
+     */
     int Snake::partCount() const
     {
        return m_body.size();
@@ -74,6 +87,9 @@ namespace snakegame
         return &m_texture;
     }
 
+    /*
+     * Pushes new part to the body at the tail position 
+     */
     void Snake::grow() 
     {   
         // new part gets initialized at the left of the last body part
@@ -81,6 +97,9 @@ namespace snakegame
         m_speed += .1f;
     }
 
+    /*
+     * Returns if snake is getting out of bounds 
+     */
     bool Snake::alive() const
     {
         return (m_body[0].m_position.x + constants::SPRITES_WIDTH/2) >= 0 

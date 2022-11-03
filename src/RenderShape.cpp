@@ -10,6 +10,9 @@ namespace snakegame
         m_texture.setRepeated(true);
         this->setTexture(&m_texture);
     }
+    /*
+     * Given a Render shape, returns if it collides with this 
+     */
     bool RenderShape::intersects(RenderShape const& other) const
 	{
         bool overlaps = true;

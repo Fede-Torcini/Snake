@@ -8,6 +8,26 @@ namespace snakegame
     {
     }
 
+    static sf::Vector2f rotate_point(float centerX, float centerY, float angle, sf::Vector2f toTranslate)
+    {
+        float s = sin(angle);
+        float c = cos(angle);
+
+        sf::Vector2f point = toTranslate;
+        // translate point back to origin:
+        point.x -= centerX;
+        point.y -= centerY;
+
+        // rotate point
+        float xnew = point.x * c - point.y * s;
+        float ynew = point.x * s + point.y * c;
+
+        // translate point back:
+        point.x = xnew + centerX;
+        point.y = ynew + centerY;
+        return {point.x, point.y};
+    }
+
     void Part::getVetices(std::vector<sf::Vertex>& vertices)
     {
         int spritePosition = constants::BODY_SPRITE_POSITION;
